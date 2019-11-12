@@ -1,11 +1,15 @@
 import './styles.css';
 import { Entry } from './entry.js';
 
-var title = "test title";
-var body = "HEYYYYY this is a test of the Entry object.";
-var newEntry = new Entry(title, body);
+$(document).ready(function() {
+  $("#entryForm").submit(function(event) {
+    event.preventDefault();
+    let titleInput = $("#titleEntry").val();
+    let bodyInput = $("#bodyEntry").val();
+    var newEntry = new Entry(titleInput, bodyInput);
+    $("#titleDump").text(newEntry.title);
+    $("#bodyDump").text(newEntry.body);
+  })
 
-console.log(newEntry.getWords(body));
-console.log(newEntry.getVowels(body));
-console.log(newEntry.getConsonants(body));
-console.log(newEntry.getTeaser(body));
+
+})
